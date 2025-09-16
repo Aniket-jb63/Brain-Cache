@@ -1,0 +1,60 @@
+import { Menu } from "lucide-react"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { LuLayoutGrid,LuBrain } from "react-icons/lu";
+import { FaYoutube,FaTwitter,FaUser } from "react-icons/fa";
+import { IoIosLogOut } from "react-icons/io";
+import { useNavigate } from "react-router-dom"
+import { HiOutlineDocument } from "react-icons/hi";
+
+const Sidebar = () => {
+  const navigate = useNavigate()
+  const onclickhandler=()=>{
+    navigate('/signup')
+    localStorage.removeItem('token')
+  }
+  const onclickhandler2=()=>{
+    navigate('/user/tweets')
+    window.location.reload()
+  }
+  const onclickhandler3=()=>{
+    navigate('/user')
+    window.location.reload()
+  }
+  const onclickhandler4=()=>{
+    navigate('/user/profile')
+    window.location.reload()
+  }
+  const onclickhandler5=()=>{
+    navigate('/user/videos')
+    window.location.reload()
+  }
+  const onclickhandler6=()=>{
+    navigate('/user/documents')
+    window.location.reload()
+  }
+
+  return (
+    <div>
+      <Sheet>
+        <SheetTrigger>
+          <Menu/>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <h1 className="flex items-center text-3xl py-10 mx-1"><LuBrain className="text-[50px] mx-2"/>Brainly</h1>
+          <h1 onClick={onclickhandler3} className="flex hover:bg-accent py-2 cursor-pointer"><LuLayoutGrid className=" mx-5 text-3xl"/>Dashboard</h1>
+          <h1 onClick={onclickhandler5} className="flex hover:bg-accent py-2 cursor-pointer"><FaYoutube className=" mx-5 text-3xl"/>Videos</h1>
+          <h1 onClick={onclickhandler2} className="flex hover:bg-accent py-2 cursor-pointer"><FaTwitter className=" mx-5 text-3xl"/>Tweets</h1>
+          <h1 onClick={onclickhandler6} className="flex hover:bg-accent py-2 cursor-pointer"><HiOutlineDocument className=" mx-5 text-3xl"/>Documents</h1>
+          <h1 onClick={onclickhandler4} className="flex hover:bg-accent py-2 cursor-pointer"><FaUser className=" mx-5 text-3xl"/>Profile</h1>
+          <h1 onClick={onclickhandler} className="flex hover:bg-accent py-2 cursor-pointer"><IoIosLogOut className=" mx-5 text-3xl"/>Logout</h1>
+        </SheetContent>
+      </Sheet>
+    </div>
+  )
+}
+
+export default Sidebar
